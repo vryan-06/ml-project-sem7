@@ -7,7 +7,8 @@ from PIL import Image
 import io
 
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
+CORS(app, origins=["https://asl-recognition.vercel.app"])
 curr_loc = os.path.dirname(os.path.realpath(__file__))
 model = load_model("SignLanguage_recognition_inceptionv3.h5")
 print("Model has been loaded")
