@@ -22,7 +22,7 @@
             const formData = new FormData(form);
 
             try {
-                const response = await axios.post("http://127.0.0.1:5000/predict", formData);
+                const response = await axios.post("https://asl-backend.onrender.com/predict", formData);
 
                 if (response.data.error) {
                     document.getElementById("result").textContent = "Error: " + response.data.error;
