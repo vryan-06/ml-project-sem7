@@ -4,11 +4,9 @@ import os
 import numpy as np
 from keras.models import load_model
 from PIL import Image
-import io
 
 app = Flask(__name__)
-# CORS(app)
-CORS(app, origins=["https://asl-recognition.vercel.app"])
+CORS(app)
 curr_loc = os.path.dirname(os.path.realpath(__file__))
 model = load_model("SignLanguage_recognition_inceptionv3.h5")
 print("Model has been loaded")
@@ -20,7 +18,6 @@ class_index_to_value = {
     30: 'U', 31: 'V', 32: 'W', 33: 'X', 34: 'Y', 35: 'Z'
 }
 
-predicted_value="-"
 @app.route("/")
 def index():
     return "<h1>Sign Language Recognition</h1>"
