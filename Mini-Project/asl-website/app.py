@@ -19,9 +19,10 @@ class_index_to_value = {
     30: 'U', 31: 'V', 32: 'W', 33: 'X', 34: 'Y', 35: 'Z'
 }
 
+predicted_value="-"
 @app.route("/")
 def index():
-    return "<h1> Sign Language Recognition</h1>"
+    return "<h1>Sign Language Recognition</h1>"
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -34,6 +35,9 @@ def predict():
 
             # Loading and Pre0Processing
             img = Image.open(image_file)
+            # print(img.mode)
+            img = img.convert("RGB")
+            # print(img.mode)
             img = img.resize((224, 224))
             img = np.array(img)
             img = np.expand_dims(img, axis=0)
@@ -42,6 +46,7 @@ def predict():
             prediction = model.predict(img)
             class_index = np.argmax(prediction)
             predicted_value = class_index_to_value[class_index]
+            print("Predicted Sign is : ", predicted_value)
 
             return jsonify({"predicted": predicted_value})
         except Exception as e:

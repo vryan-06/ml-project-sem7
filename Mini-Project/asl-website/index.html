@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>Sign Language Recognition</h1>
-    <form action="/predict" method="post" enctype="multipart/form-data">
+    <form action="https://asl-backend.onrender.com/predict" method="post" enctype="multipart/form-data">
         <input type="file" name="image" accept="image/*" required>
         <button type="submit">Predict</button>
     </form>
@@ -15,7 +15,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        // JavaScript to handle the form submission and display the result
         const form = document.querySelector("form");
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
