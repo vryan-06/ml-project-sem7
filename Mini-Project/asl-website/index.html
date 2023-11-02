@@ -2,17 +2,28 @@
 <html>
 <head>
     <title>ASL Recognition</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <h1>Sign Language Recognition</h1>
-    <form action="/predict" method="post" enctype="multipart/form-data">
-        <input type="file" name="image" accept="image/*" required>
-        <button type="submit">Predict</button>
-    </form>
-    <div>
-        <h2>Recognized Sign: <span id="result"></span></h2>
-    </div>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">                  
+                    <div class="fadeIn first">
+                        <h1>Sign Language Recognition</h1>
+                        <br>
+                    </div>
 
+                    <form action="/predict" method="post" enctype="multipart/form-data">
+                        <input type="file" name="image" accept="image/*" required class="fadeIn second">
+                        <button type="submit">Predict</button>
+                    </form>
+                    <div>
+                        <h2>Recognized Sign: <span id="result"></span></h2>
+                    </div>
+                    <p>Developed by Mahek Intwala(9423), Ryan Valiaparambil(9237), Omkar Satupe(9232) </p>
+                </div>
+        </div>
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         const form = document.querySelector("form");

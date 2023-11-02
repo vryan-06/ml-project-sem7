@@ -6,7 +6,8 @@ from keras.models import load_model
 from PIL import Image
 
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 curr_loc = os.path.dirname(os.path.realpath(__file__))
 model = load_model("SignLanguage_recognition_inceptionv3.h5")
 print("Model has been loaded")
