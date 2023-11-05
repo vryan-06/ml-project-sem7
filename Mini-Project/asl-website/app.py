@@ -7,7 +7,7 @@ from PIL import Image
 
 app = Flask(__name__)
 # CORS(app)
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app, resources={r"/*": {"origins": "https://asl-recognition.vercel.app"}})
 curr_loc = os.path.dirname(os.path.realpath(__file__))
 model = load_model("SignLanguage_recognition_inceptionv3.h5")
 print("Model has been loaded")
@@ -22,6 +22,12 @@ class_index_to_value = {
 @app.route("/")
 def index():
     return "<h1>Sign Language Recognition</h1>"
+
+
+def add_cors_headers(response):
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    # You can also add other CORS headers if needed
+    return response
 
 @app.route("/predict", methods=["POST"])
 def predict():
